@@ -10,7 +10,8 @@
 >     endrepeat
 >```
 
-Decide `v` when at least `n - t` are equal to `v`. 
+Decide `v` when at least `n - t` are equal to `v`.
+
 Suppose then that p1 receives `n - t` values `v`, then all other processes can receive at least `n - 2t` values `v`. Let's make them adopt `v`, so that during the next round all correct processes decide `v`. But in order to adopt one value, we need it to be a majority, which means `n - 2t > n/2`, which yields `t < n/4`.
 
 Suppose then that half of processes receives `n - 2t` values `v` and adopts it. Can it happen so that the other half of the processes receives `n - 2t` values `w` and adopt it? If it were possible, the algorithm would never terminate. However, there's only `2t` of `w`s, so we need to make sure that `n - 2t > 2t`, which again yields `t < n/4`.
@@ -39,3 +40,11 @@ Let's construct a starting configuration where `n - t` processes (including proc
 >          -3- else adopt a random value 
 > endrepeat
 > ```
+
+Decide `v` when at least `n - 2t` received values are equal to `v`.
+
+Suppose then that p1 receives `n - 2t` values `v`, then all other processes can receive at least `n - 3t` values `v`. Let's make them adopt `v`, so that during the next round all correct processes decide `v`. But in order to adopt one value, we need it to be a majority, which means `n - 3t > n/2`, which yields `t < n/6`.
+
+Unlike the crash failure case, we need to worry about adversary trying to make the protocol fail to reach agreement by making some process p2 observe the maximum number of `w`s, which is `3t`, so we have `3t < n - 3t`, which holds if `t < n/6`.
+
+**Answer**: the protocol is for `t < n/6` Byzantine failures; decide `v` if at least `n - 2t` received values are equal to `v`; adopt `v` if at least `n - 3t` received values are equal to `v`.
