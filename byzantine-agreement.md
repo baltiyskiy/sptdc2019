@@ -24,4 +24,4 @@ Let's construct a starting configuration where `n - t` processes (including proc
 
 **Answer**: no, because there exists an execution where any such protocol would fail to reach agreement.
 
-* This claim seems to require that the protocol is deterministic in choosing whether to flip the coin, but it's really not, because the processes can only use their estimate and the received messages, all of which is controlled by the adversary, and the coin is common, so if they toss it, then there still exists an execution where the adversary correctly guesses the outcome.
+\* This claim seems to require that the protocol is deterministic in choosing whether to flip the coin, but it's really not, because the processes can only use their estimate and the received messages, all of which is controlled by the adversary, and the coin is common, so if they toss it, then there still exists an execution where the adversary correctly guesses the outcome.
