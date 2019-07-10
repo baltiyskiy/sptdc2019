@@ -1,4 +1,5 @@
-> 1. Complete the agreement protocol below and give the bound on the ratio n/t for an asynchronous communication model with adaptive adversary and crash failures.
+## 1.1
+> Complete the agreement protocol below and give the bound on the ratio n/t for an asynchronous communication model with adaptive adversary and crash failures.
 > ```
 >     repeat
 >         broadcast my estimate 
@@ -16,7 +17,8 @@ Suppose then that half of processes receives `n - 2t` values `v` and adopts it. 
 
 **Answer**: the protocol is for `t < n/4` crash failures; decide `v` if `n - t` values are equal to `v`; adopt `v` if `n - 2t` values are equal to `v`.
 
-> 2. Is it possible to design a protocol with one message exchange per round and `t < n/2` if the coin is common?
+## 1.2
+> Is it possible to design a protocol with one message exchange per round and `t < n/2` if the coin is common?
 
 Let's construct a starting configuration where `n - t` processes (including process p1) have estimate 0, and the remaining `t` processes have estimate 1. The adversary "shows" the first `n - t` values to p1. Since p1's estimate is 0, and all values it sees are 0, there must be an execution where it decides 0, since the protocol must decide with probability 1. Since `t < n/2`, the minimal overlap between all sets of `n - t` processes has size 1, so the adversary can construct an arbitrary combination of 0 and 1 for other processes (p2, ..., pn), such that all of them flip the common coin\*. But then at the next round, processes p2, ..., pn must decide whatever value returned by the coin toss (again, there must exist such an execution where it happens, because the protocol must terminate with probability 1). There exists an execution where coin flip yields 1. In this execution, this protocol fails to reach an agreement, because p1 decides 0 and the rest decide 1.
 
